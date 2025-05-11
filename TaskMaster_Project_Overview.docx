@@ -1,0 +1,205 @@
+# TaskMaster: Advanced System Process Management Tool
+
+## Project Idea
+TaskMaster is a comprehensive GUI-based task manager application designed to monitor, analyze, and control system processes. It provides real-time visualization of system resources, historical data analysis, and process management capabilities. The application serves as a more powerful alternative to the built-in task manager, offering advanced features for both casual users and system administrators who need to monitor system performance and identify resource-intensive processes.
+
+## Technology Stack
+The TaskMaster application is built using the following technology stack:
+
+1. **Programming Language**: Python 3.x
+2. **GUI Framework**: PyQt6
+3. **Data Storage**: SQLite3
+4. **Data Analysis**: Pandas
+5. **Data Visualization**: Matplotlib
+6. **System Monitoring**: Psutil
+7. **Multithreading**: Python's threading and PyQt6's QThread
+
+## Libraries and Their Functions
+
+### Core Libraries
+
+1. **PyQt6**
+   - **Purpose**: Provides the graphical user interface framework
+   - **Functions**: 
+     - Creates windows, dialogs, and UI components
+     - Handles user interactions and events
+     - Manages application layout and styling
+     - Provides threading capabilities for non-blocking UI
+
+2. **Psutil**
+   - **Purpose**: Monitors system processes and resources
+   - **Functions**:
+     - Retrieves process information (CPU usage, memory usage, status)
+     - Monitors system-wide resources (CPU, memory, disk)
+     - Provides process control capabilities (termination, priority adjustment)
+     - Tracks process relationships and hierarchies
+
+3. **Matplotlib**
+   - **Purpose**: Creates data visualizations and charts
+   - **Functions**:
+     - Generates real-time performance graphs
+     - Visualizes historical performance data
+     - Creates bar charts for process comparisons
+     - Provides interactive chart components
+
+4. **Pandas**
+   - **Purpose**: Performs data analysis and manipulation
+   - **Functions**:
+     - Processes historical performance data
+     - Calculates statistics and trends
+     - Filters and transforms process data
+     - Facilitates time-series analysis of system performance
+
+5. **SQLite3**
+   - **Purpose**: Provides persistent data storage
+   - **Functions**:
+     - Stores historical process and system data
+     - Enables data retrieval for trend analysis
+     - Maintains a database of process statistics
+     - Supports data querying for performance analysis
+
+### Supporting Libraries
+
+6. **Datetime**
+   - **Purpose**: Handles date and time operations
+   - **Functions**:
+     - Timestamps process data
+     - Manages time-series data
+     - Calculates time differences for performance metrics
+
+7. **Collections**
+   - **Purpose**: Provides specialized container datatypes
+   - **Functions**:
+     - Uses deque for efficient data storage in charts
+     - Manages fixed-size collections for performance data
+
+8. **OS**
+   - **Purpose**: Interfaces with the operating system
+   - **Functions**:
+     - Creates directories for data storage
+     - Manages file paths
+     - Handles system-specific operations
+
+## API Usage
+
+TaskMaster primarily uses Python libraries rather than external APIs. However, it does interface with several system-level APIs through its libraries:
+
+1. **System Process API (via Psutil)**
+   - **Purpose**: Interacts with the operating system's process management
+   - **Integration**: The application uses psutil to access system processes, which internally uses platform-specific APIs
+   - **Functions**:
+     - Retrieves process information
+     - Controls process execution (termination, priority)
+     - Monitors system resources
+
+2. **Database API (via SQLite3)**
+   - **Purpose**: Provides a standardized interface to the SQLite database
+   - **Integration**: The application uses Python's sqlite3 module to interact with the database
+   - **Functions**:
+     - Stores and retrieves process history
+     - Manages database connections and transactions
+     - Executes SQL queries for data analysis
+
+3. **GUI API (via PyQt6)**
+   - **Purpose**: Interfaces with the operating system's windowing system
+   - **Integration**: The application uses PyQt6, which wraps Qt's C++ APIs
+   - **Functions**:
+     - Creates native-looking UI components
+     - Handles user input and system events
+     - Manages application windows and dialogs
+
+## Basic Project Functionality
+
+TaskMaster operates through several interconnected components:
+
+1. **Process Monitoring**
+   - The application continuously monitors system processes using a background thread
+   - Process data is collected at regular intervals (every 5 seconds)
+   - The UI is updated to reflect the current state of processes
+
+2. **Data Storage**
+   - Process and system data is periodically saved to an SQLite database
+   - The database maintains historical records for trend analysis
+   - Old data is automatically cleaned up to prevent excessive database growth
+
+3. **User Interface**
+   - The main window displays a table of the top processes by CPU usage
+   - Additional dialogs provide detailed performance graphs and historical analysis
+   - The UI is responsive and updates in real-time without blocking user interaction
+
+4. **Data Analysis**
+   - Historical data is analyzed using pandas to identify trends and patterns
+   - Statistics are calculated for both individual processes and system-wide metrics
+   - Analysis results are presented through charts and summary statistics
+
+## Features
+
+### Real-time Monitoring
+1. **Process Table**
+   - Displays the top 10 processes by CPU usage
+   - Shows process details (PID, name, CPU usage, memory usage, status)
+   - Highlights resource-intensive processes
+   - Supports filtering and searching
+
+2. **System Resource Monitoring**
+   - Tracks CPU usage across all cores
+   - Monitors memory consumption
+   - Tracks disk usage
+   - Displays total process count
+
+### Process Management
+1. **Process Control**
+   - Start new processes
+   - Terminate existing processes
+   - Adjust process priorities
+   - View process details
+
+2. **Process Filtering**
+   - Search for specific processes
+   - Filter by resource usage
+   - Sort by different metrics
+
+### Performance Visualization
+1. **Real-time Graphs**
+   - CPU usage line graph
+   - Memory usage line graph
+   - Disk usage line graph
+   - Auto-updating charts
+
+2. **Historical Analysis**
+   - System performance trends over time
+   - Process-specific performance history
+   - Top processes by average CPU usage
+   - Statistical analysis of resource usage
+
+### Data Management
+1. **Historical Data Storage**
+   - Persistent SQLite database
+   - Automatic data collection
+   - Configurable data retention
+   - Efficient data storage
+
+2. **Data Analysis**
+   - Statistical summaries
+   - Trend identification
+   - Resource usage patterns
+   - Performance comparisons
+
+### User Interface
+1. **Modern Dark Theme**
+   - Professional appearance
+   - Reduced eye strain
+   - Consistent styling
+   - Responsive layout
+
+2. **Multiple Views**
+   - Main process table
+   - Performance graphs
+   - Historical analysis
+   - Process details
+
+## Conclusion
+
+TaskMaster represents a comprehensive solution for system process monitoring and management. By combining real-time visualization with historical data analysis, it provides users with powerful tools to understand and optimize system performance. The application's modular architecture and use of industry-standard libraries ensure reliability, maintainability, and extensibility for future enhancements.
+
+The integration of pandas and SQLite3 for data analysis and storage elevates TaskMaster beyond a simple task manager, transforming it into an analytical tool that can identify patterns and trends in system resource usage over time. This makes it valuable not only for day-to-day system management but also for long-term performance optimization and troubleshooting.
